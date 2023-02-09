@@ -4,7 +4,7 @@ mongoose.set('strictQuery', false);
 const userSchema = new mongoose.Schema({
   name: String,
   email: String,
-  passwprd: String
+  password: String
 });
 
 
