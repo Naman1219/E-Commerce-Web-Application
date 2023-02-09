@@ -1,10 +1,12 @@
 import { React, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
   // Using the use state here:
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const collectData = async () => {
     console.warn(name, email, password);
@@ -25,6 +27,7 @@ const SignUp = () => {
     //we require to use .json() with it. this also returns promise : so we use await in front of it as well
     result = await result.json();
     console.log(result);
+    navigate('/');
   }
 
   return (
