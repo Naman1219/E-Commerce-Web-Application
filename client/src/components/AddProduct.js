@@ -1,6 +1,7 @@
 import { React, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 const AddProduct = () => {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
@@ -16,7 +17,7 @@ const AddProduct = () => {
     }
     // console.warn(name, price, category, company);
     const userId = JSON.parse(localStorage.getItem('user'))._id;
-    let result = await fetch("http://localhost:5000/add-product", {
+    let result = await fetch(`${BASE_URL}/add-product`, {
       method: 'post',
       body: JSON.stringify({ name, price, category, company, userId }),
       headers: {

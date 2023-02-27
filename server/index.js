@@ -1,4 +1,5 @@
 const express = require('express');
+require("dotenv").config();
 require('./db/config');
 const cors = require('cors');
 const User = require('./db/User');
@@ -84,4 +85,4 @@ app.get("/search/:key", async (req, res) => {
   res.send(result);
 });
 
-app.listen(5000);
+app.listen(process.env.PORT || 5000);

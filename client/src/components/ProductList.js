@@ -1,6 +1,7 @@
 import { React, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 const ProductList = () => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
@@ -8,13 +9,13 @@ const ProductList = () => {
   }, [])
 
   const getProducts = async () => {
-    let result = await fetch('http://localhost:5000/products');
+    let result = await fetch(`${BASE_URL}/products`);
     result = await result.json();
     setProducts(result);
   }
 
   const deleteProduct = async (id) => {
-    let result = await fetch(`http://localhost:5000/product/${id}`, {
+    let result = await fetch(`${BASE_URL}/product/${id}`, {
       method: "Delete"
     });
     result = await result.json();
@@ -26,7 +27,7 @@ const ProductList = () => {
   const searchHandle = async (event) => {
     let key = event.target.value;
     if (key) {
-      let result = await fetch(`http://localhost:5000/search/${key}`);
+      let result = await fetch(`${BASE_URL}/search/${key}`);
       result = await result.json();
       if (result) {
         setProducts(result);

@@ -1,6 +1,8 @@
 import { React, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
 const Login = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("");
@@ -13,7 +15,7 @@ const Login = () => {
   })
   const handleLogin = async () => {
     console.warn({ email }, { password });
-    let result = await fetch('http://localhost:5000/login', {
+    let result = await fetch(`${BASE_URL}/login`, {
       method: 'post',
       body: JSON.stringify({ email, password }),
       headers: {
