@@ -1,8 +1,7 @@
-const mongoose = require('mongoose');
-mongoose.set('strictQuery', false);
-const DB = process.env.DATABASEURL;
+const mongoose = require("mongoose");
+mongoose.set("strict", true);
+const DB = "mongodb://127.0.0.1:27017/db";
 
-mongoose.connect(DB, {
-  useUnifiedTopology: true,
-  useNewUrlParser: true
+mongoose.connect(DB, () => {
+  console.log("connected DB");
 });
