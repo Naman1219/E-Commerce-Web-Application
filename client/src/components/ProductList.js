@@ -1,5 +1,5 @@
-import { React, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { React, useEffect, useState, } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 const ProductList = () => {
@@ -38,6 +38,11 @@ const ProductList = () => {
     }
   }
 
+  const navigate = useNavigate();
+  const handleUpdateClick = (productId) => {
+    navigate("/update/" + productId);
+  };
+
   return (
     <div className='product-list'>
       <h1> Product List</h1>
@@ -63,7 +68,7 @@ const ProductList = () => {
             <li>{item.company}</li>
             <li>
               <button onClick={() => deleteProduct(item._id)}>Delete</button>
-              <Link to={"/update/" + item._id}>Update</Link>
+              <button onClick={() => handleUpdateClick(item._id)}>Update</button>
             </li>
           </ul>
         )
