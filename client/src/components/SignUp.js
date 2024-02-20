@@ -59,6 +59,7 @@ const SignUp = () => {
         value={name}
         onChange={(e) => setName(e.target.value)}
         placeholder="Enter Name"
+        required:true
       />
 
       <input
@@ -67,6 +68,7 @@ const SignUp = () => {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         placeholder="Enter Email"
+        required:true
       />
 
       <input
@@ -75,6 +77,7 @@ const SignUp = () => {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         placeholder="Enter Password"
+        required:true
       />
       <p className={`password-strength ${strengthClass}`}>
         {passwordStrength(password).value}....
